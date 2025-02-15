@@ -11,8 +11,17 @@ dt = 1
 
 player_pos = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 2)
 
-player_image= pygame.image.load("C:/Users/ayman/OneDrive/Desktop/kenney_sokoban-pack/PNG/Default_size/playerFace.png")
-player_image= pygame.transform.scale(player_image, (80,80))
+right_player= pygame.image.load("C:/Users/ayman/OneDrive/Desktop/kenney_sokoban-pack/PNG/Default_size/Player/player_11.png")
+left_player= pygame.image.load("C:/Users/ayman/OneDrive/Desktop/kenney_sokoban-pack/PNG/Default_size/Player/player_20.png")
+
+
+
+
+
+right_player= pygame.transform.scale(right_player, (80,80))
+left_player= pygame.transform.scale(left_player, (80,80))
+
+current_player=right_player
 
 while running:
     # poll for events
@@ -32,12 +41,16 @@ while running:
         player_pos.y += 300 * dt
     if keys[pygame.K_a]:
         player_pos.x -= 300 * dt
+        current_player=left_player
     if keys[pygame.K_d]:
         player_pos.x += 300 * dt
+        current_player=right_player
+
 
     # Dessiner le personnage (blit = coller une image)
-    screen.blit(player_image, player_pos)
-    
+    screen.blit(current_player, player_pos)
+
+
     # flip() the display to put your work on screen
     pygame.display.flip()
 
