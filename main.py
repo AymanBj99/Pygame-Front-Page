@@ -11,7 +11,8 @@ dt = 1
 
 player_pos = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 2)
 
-
+player_image= pygame.image.load("C:/Users/ayman/OneDrive/Desktop/kenney_sokoban-pack/PNG/Default_size/playerFace.png")
+player_image= pygame.transform.scale(player_image, (80,80))
 
 while running:
     # poll for events
@@ -23,7 +24,6 @@ while running:
     # fill the screen with a color to wipe away anything from last frame
     screen.fill("black")
 
-    pygame.draw.circle(screen, "red", player_pos, 40)
 
     keys = pygame.key.get_pressed()
     if keys[pygame.K_w]:
@@ -35,6 +35,9 @@ while running:
     if keys[pygame.K_d]:
         player_pos.x += 300 * dt
 
+    # Dessiner le personnage (blit = coller une image)
+    screen.blit(player_image, player_pos)
+    
     # flip() the display to put your work on screen
     pygame.display.flip()
 
